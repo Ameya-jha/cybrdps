@@ -198,42 +198,29 @@ ul{ list-style:none; margin:0; padding:0; }
 }
 
 /* ============================================================
-   HERO
+   HERO (Adjusted for better spacing & contrast)
    ============================================================ */
-.hero{
-  position: relative;
-  z-index: 2;
-  min-height: 82vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 6vh 5vw 4vh;
-}
-
-.hero-title-wrap{
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-title{
+.hero-title {
   position: relative;
   margin: 0;
   display: flex;
   align-items: center;
-  gap: clamp(0.4em, 3vw, 1.4em);
+  /* 1. Increased gap between WARP and CYBR to make breathing room for the logos */
+  gap: clamp(2.5rem, 10vw, 7.5rem); 
   font-family: var(--font-display);
   font-weight: 400;
   line-height: 0.85;
   text-transform: uppercase;
   font-size: clamp(2.6rem, 13vw, 9.5rem);
-  color: var(--text);
+  
+  /* 2. Made the text slightly less opaque so it blends into the background */
+  color: rgba(238, 241, 245, 0.78); 
   letter-spacing: 0.01em;
 }
 
-.word{ position: relative; z-index: 1; }
+.word { position: relative; z-index: 1; }
 
-.logo-overlap{
+.logo-overlap {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -242,86 +229,26 @@ ul{ list-style:none; margin:0; padding:0; }
   display: flex;
   align-items: center;
   pointer-events: none;
+  /* 3. Added a slight negative gap inside the logo container 
+     if you want the two logos themselves to interlock tightly */
+  gap: -10px; 
 }
 
-.logo-mark{
-  height: clamp(3.4rem, 15vw, 10rem);
+.logo-mark {
+  /* 4. Bumped up the size scale significantly so they pop out */
+  height: clamp(5rem, 20vw, 14rem); 
   width: auto;
   opacity: 0.92;
   mix-blend-mode: screen;
   filter: brightness(1.15);
 }
 
-.logo-mark--warp{
-  margin-right: clamp(-2.2rem, -6vw, -1rem);
+/* 5. Tweaked the individual negative margins so they sit nicely in the gap */
+.logo-mark--warp {
+  margin-right: clamp(-1rem, -3vw, -0.5rem);
 }
-.logo-mark--cybr{
-  margin-left: clamp(-2.2rem, -6vw, -1rem);
-}
-
-.hero-meta{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-top: clamp(2.5rem, 6vw, 4.5rem);
-  padding: 0 0.4vw;
-}
-
-.hero-meta-left,
-.hero-meta-right{
-  margin: 0;
-  font-family: var(--font-head);
-  font-size: clamp(0.75rem, 1.4vw, 0.95rem);
-  letter-spacing: 0.03em;
-  color: var(--text-dim);
-}
-
-.hero-meta-right{ text-align: right; }
-
-.hero-bottom{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: clamp(2.5rem, 7vw, 5rem);
-  padding: 0 0.4vw;
-}
-
-.socials{
-  display: flex;
-  gap: 22px;
-}
-
-.social-item{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-dim);
-  transition: color 0.25s var(--ease);
-}
-.social-item:hover{ color: var(--lime-bright); }
-
-.ig-icon{
-  width: 26px; height: 26px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.ig-icon svg{ width: 15px; height: 15px; }
-
-.social-label{
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.03em;
-}
-
-.hero-tag{
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-faint);
-  letter-spacing: 0.04em;
+.logo-mark--cybr {
+  margin-left: clamp(-1rem, -3vw, -0.5rem);
 }
 
 /* ============================================================
