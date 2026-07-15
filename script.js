@@ -1,23 +1,29 @@
-// Theme toggle
-const toggle = document.getElementById('themeToggle');
-toggle.addEventListener('click', () => {
-  toggle.classList.toggle('on');
-  document.body.classList.toggle('light');
+const audio = document.getElementById('bg-audio');
+const toggleBtn = document.getElementById('audio-toggle');
+const playIcon = toggleBtn.querySelector('.icon-play');
+const pauseIcon = toggleBtn.querySelector('.icon-pause');
+
+toggleBtn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play().catch(() => {
+      // Placeholder file may not exist yet — swap in a real audio file to enable playback.
+      console.warn('Add a real audio file at audio/placeholder.mp3 (or update the src) to enable playback.');
+    });
+  } else {
+    audio.pause();
+  }
 });
 
-// Background audio: always on, looping.
-// Browsers block autoplay-with-sound until the user interacts with the page,
-// so we force playback on the first click/keypress/touch anywhere on the page
-// as a fallback in case autoplay was blocked on load.
-const bgAudio = document.getElementById('bgAudio');
+audio.addEventListener('play', () => {
+  toggleBtn.setAttribute('aria-pressed', 'true');
+  toggleBtn.setAttribute('aria-label', 'Pause audio');
+  playIcon.style.display = 'none';
+  pauseIcon.style.display = 'block';
+});
 
-function ensurePlaying() {
-  if (bgAudio && bgAudio.paused) {
-    bgAudio.play().catch(() => {});
-  }
-}
-
-window.addEventListener('load', ensurePlaying);
-['click', 'keydown', 'touchstart'].forEach(evt => {
-  document.addEventListener(evt, ensurePlaying, { once: true });
+audio.addEventListener('pause', () => {
+  toggleBtn.setAttribute('aria-pressed', 'false');
+  toggleBtn.setAttribute('aria-label', 'Play audio');
+  playIcon.style.display = 'block';
+  pauseIcon.style.display = 'none';
 });
