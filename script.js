@@ -5,40 +5,19 @@ toggle.addEventListener('click', () => {
   document.body.classList.toggle('light');
 });
 
-// Click an image slot to preview a local file (drag-and-drop also supported)
-function wireImageSlot(slotId) {
-  const slot = document.getElementById(slotId);
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'image/*';
-  input.style.display = 'none';
-  document.body.appendChild(input);
+// Background audio: always on, looping.
+// Browsers block autoplay-with-sound until the user interacts with the page,
+// so we force playback on the first click/keypress/touch anywhere on the page
+// as a fallback in case autoplay was blocked on load.
+const bgAudio = document.getElementById('bgAudio');
 
-  const loadFile = (file) => {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      slot.innerHTML = `<img src="${e.target.result}" alt="">`;
-    };
-    reader.readAsDataURL(file);
-  };
-
-  slot.addEventListener('click', () => input.click());
-  input.addEventListener('change', () => loadFile(input.files[0]));
-
-  slot.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    slot.style.borderColor = 'rgba(255,255,255,0.6)';
-  });
-  slot.addEventListener('dragleave', () => {
-    slot.style.borderColor = '';
-  });
-  slot.addEventListener('drop', (e) => {
-    e.preventDefault();
-    slot.style.borderColor = '';
-    loadFile(e.dataTransfer.files[0]);
-  });
+function ensurePlaying() {
+  if (bgAudio && bgAudio.paused) {
+    bgAudio.play().catch(() => {});
+  }
 }
 
-wireImageSlot('slot1');
-wireImageSlot('slot2');
+window.addEventListener('load', ensurePlaying);
+['click', 'keydown', 'touchstart'].forEach(evt => {
+  document.addEventListener(evt, ensurePlaying, { once: true });
+});
