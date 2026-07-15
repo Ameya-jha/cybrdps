@@ -1,0 +1,243 @@
+/* --- Reset & Root Variables --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --accent-glow: rgba(255, 255, 255, 0.12);
+    --transition-speed: 0.4s;
+    --font-primary: 'Inter', sans-serif;
+    --font-display: 'Oswald', sans-serif;
+}
+
+/* Light / Alternate Ambient Theme Class */
+body.alt-ambient {
+    --bg-color: #0b0f19;
+    --accent-glow: rgba(0, 149, 255, 0.15);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-primary);
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background-color var(--transition-speed) ease;
+    position: relative;
+}
+
+/* --- Ambient Cinematic Glow --- */
+.ambient-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    transition: background var(--transition-speed) ease, transform 0.1s ease-out;
+}
+
+/* --- Header / Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 5%;
+    z-index: 10;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-size: 0.95rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    opacity: 1;
+}
+
+/* --- Switch Toggle Widget --- */
+.toggle-container {
+    position: relative;
+    width: 50px;
+    height: 26px;
+}
+
+.toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-label {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #333;
+    border-radius: 34px;
+    transition: var(--transition-speed);
+}
+
+.toggle-label:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: var(--transition-speed);
+}
+
+.toggle-input:checked + .toggle-label {
+    background-color: #555;
+}
+
+.toggle-input:checked + .toggle-label:before {
+    transform: translateX(24px);
+}
+
+/* --- Hero Section & Layers --- */
+.hero-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* Layer 1: Massive Background Text */
+.giant-text-back {
+    font-family: var(--font-display);
+    font-size: 16.5vw;
+    font-weight: 700;
+    letter-spacing: -2px;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    z-index: 1;
+    user-select: none;
+    /* Clean vertical alignment matching your image */
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
+}
+
+/* Layer 2: Subject Wrapper & Image */
+.subject-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 85vh;
+    width: auto;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.subject-img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    pointer-events: auto; /* Allows hover interactions on the subject */
+    transition: transform 0.2s ease-out;
+}
+
+/* Layer 3: Details & Subtexts */
+.hero-details {
+    position: absolute;
+    bottom: 12%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+/* --- Footer & Socials --- */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 5%;
+    z-index: 10;
+}
+
+.social-icons a {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-right: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.telegram-link a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    letter-spacing: 0.5px;
+    transition: opacity 0.3s;
+}
+
+.telegram-link a:hover {
+    opacity: 1;
+}
+
+/* --- Media Queries for Responsive Scale --- */
+@media (max-width: 768px) {
+    .giant-text-back {
+        font-size: 18vw;
+    }
+    .subject-container {
+        height: 70vh;
+    }
+    .hero-details {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        bottom: 15%;
+    }
+    .nav-links {
+        display: none; /* Hide middle links on smaller viewports */
+    }
+}
