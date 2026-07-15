@@ -153,21 +153,12 @@ body {
   width: 240px;
   height: 340px;
   background: #151515;
-  border: 1px dashed var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 13px;
-  color: var(--muted);
-  padding: 16px;
   overflow: hidden;
   border-radius: 4px;
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .img-slot:hover {
-  border-color: rgba(255,255,255,0.5);
   transform: translateY(-4px);
 }
 
@@ -177,8 +168,6 @@ body {
   object-fit: cover;
   display: block;
 }
-
-.slot-label { pointer-events: none; }
 
 /* footer row */
 .footer {
