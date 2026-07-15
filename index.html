@@ -1,61 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WarP X CybR</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Oswald:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WarP X CybR — Intra'26</title>
+<meta name="description" content="WarP X CybR Intra'26 — Delhi Public School Mathura Road. Tech Club x Cyber Club." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <div class="ambient-glow" id="glow"></div>
+<!-- ============ SPLASH SCREEN ============ -->
+<section id="splash" aria-label="Intro">
+  <div class="splash-inner">
+    <p class="splash-line">Welcome.</p>
+    <p class="splash-line splash-line--main">To WarP X CybR Intra 26.</p>
+    <p class="splash-hint">Tap / click anywhere to continue</p>
+  </div>
+</section>
 
-    <header class="navbar">
-        <div class="logo">WarP and CybR Present</div>
-        <nav class="nav-links">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <div class="toggle-container">
-            <input type="checkbox" id="ambient-toggle" class="toggle-input">
-            <label for="ambient-toggle" class="toggle-label"></label>
+<audio id="bg-audio" src="assets/audio/territorial-pissings.mp3" preload="none" loop></audio>
+
+<!-- ============ SITE ============ -->
+<div id="site" aria-hidden="true">
+
+  <div class="grid-glow" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-brand">
+      <span class="nav-brand-text">WARP AND CYBR PRESENT</span>
+    </div>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#documents" data-nav>Documents</a>
+      <a href="#about" data-nav>About</a>
+      <a href="#contact" data-nav>Contact</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-title-wrap">
+      <h1 class="hero-title">
+        <span class="word word-warp">WARP</span>
+        <span class="word word-cybr">CYBR</span>
+        <span class="logo-overlap" aria-hidden="true">
+          <img src="assets/logo-warp.png" alt="" class="logo-mark logo-mark--warp" />
+          <img src="assets/logo-cybr.png" alt="" class="logo-mark logo-mark--cybr" />
+        </span>
+      </h1>
+    </div>
+
+    <div class="hero-meta">
+      <p class="hero-meta-left">The Most Awaited Intra Of The Year</p>
+      <p class="hero-meta-right">Presented By: WarP x CybR</p>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="socials">
+        <a href="#" class="social-item" data-social="cybr" aria-label="CybR on Instagram">
+          <span class="ig-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </span>
+          <span class="social-label">CybR</span>
+        </a>
+        <a href="#" class="social-item" data-social="warp" aria-label="WarP on Instagram">
+          <span class="ig-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </span>
+          <span class="social-label">WarP</span>
+        </a>
+      </div>
+      <p class="hero-tag">Intra'26 &middot; Cyber Division</p>
+    </div>
+  </section>
+
+  <!-- DOCUMENTS -->
+  <section class="section" id="documents">
+    <div class="section-head">
+      <span class="eyebrow">// 01</span>
+      <h2>Documents</h2>
+      <p class="section-sub">Official material for WarP X CybR Intra'26. Open or download below.</p>
+    </div>
+    <div class="doc-grid" id="docGrid"><!-- populated by script.js --></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-head">
+      <span class="eyebrow">// 02</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-body">
+      <p class="placeholder">[ Placeholder — replace with the About copy for WarP X CybR Intra'26. ]</p>
+      <p class="placeholder">[ Placeholder — add a short line about WarP (Tech Club) here. ]</p>
+      <p class="placeholder">[ Placeholder — add a short line about CybR (Cyber Club) here. ]</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-head">
+      <span class="eyebrow">// 03</span>
+      <h2>Contact</h2>
+      <p class="section-sub">Delhi Public School, Mathura Road — WarP x CybR Organising Committee</p>
+    </div>
+
+    <div class="contact-general">
+      <a href="mailto:warp.dpsmr@gmail.com" class="contact-pill">warp.dpsmr@gmail.com</a>
+      <a href="https://discord.gg/CcwWetu5VK" target="_blank" rel="noopener" class="contact-pill">Discord Server</a>
+      <a href="https://forms.gle/25kTRqLViiZ6ngCF6" target="_blank" rel="noopener" class="contact-pill">Registration Form</a>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-col">
+        <div class="contact-col-head">
+          <img src="assets/logo-warp.png" alt="" class="contact-logo" />
+          <h3>WarP OC</h3>
         </div>
-    </header>
+        <ul class="contact-list">
+          <li><span class="c-name">Ritvik Raj</span><span class="c-role">President — XII-J</span><span class="c-phone">7002915141</span></li>
+          <li><span class="c-name">Fauzan Sarwer</span><span class="c-role">Vice President — XI-H</span><span class="c-phone">9643291324</span></li>
+          <li><span class="c-name">Posshika Sharma</span><span class="c-role">Executive — XII-B</span><span class="c-phone">9910176900</span></li>
+          <li><span class="c-name">Sakshi Gupta</span><span class="c-role">Executive — XII-G</span></li>
+          <li><span class="c-name">Radhika Soni</span><span class="c-role">Executive — XI-H</span></li>
+        </ul>
+      </div>
 
-    <main class="hero-container">
-        <h1 class="giant-text-back">WARP X CYBR</h1>
-
-        <div class="subject-container">
-            <img src="https://github.com/user-attachments/assets/bfe8fd89-41b1-4ed3-89e1-57278aac1d68" alt="Logo" class="subject-img" id="subject">
+      <div class="contact-col">
+        <div class="contact-col-head">
+          <img src="assets/logo-cybr.png" alt="" class="contact-logo" />
+          <h3>CybR OC</h3>
         </div>
+        <ul class="contact-list">
+          <li><span class="c-name">Ansh Mittal</span><span class="c-role">President — XII-A</span><span class="c-phone">9821753331</span></li>
+          <li><span class="c-name">Sonakshi Hingorani</span><span class="c-role">Vice President — XI-C</span><span class="c-phone">9971888496</span></li>
+          <li><span class="c-name">Ahmed Mujtaba</span><span class="c-role">Vice President — XI-C</span><span class="c-phone">9315595151</span></li>
+          <li><span class="c-name">Ameya Jha</span><span class="c-role">Executive — XI-C</span><span class="c-phone">9319258549</span></li>
+          <li><span class="c-name">Anay Manocha</span><span class="c-role">Executive — XII-E</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-        <div class="hero-details">
-            <div class="detail-left">
-                <p>Stay tuned for more updates</p>
-            </div>
-            <div class="detail-right">
-                <p>Presented By: WarP x CybR</p>
-            </div>
-        </div>
-    </main>
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> WarP x CybR, Delhi Public School Mathura Road. Made by Ameya Jha.</p>
+  </footer>
 
-    <footer class="footer">
-        <div class="social-icons">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        </div>
-        <div class="telegram-link">
-            <a href="https://t.me/Drama_Owns_Official" target="_blank" rel="noopener noreferrer">
-                t.me/Drama_Owns_Official
-            </a>
-        </div>
-    </footer>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
